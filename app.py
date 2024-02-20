@@ -14,10 +14,9 @@ df = pd.read_csv('NBAlineup.csv')
 st.set_page_config(layout="wide")
 st.title('NBA Lineup Analysis Tool')
 st.markdown("""
-```
-     Using this tool we can analyse some key statistics in the NBA for the 2021-22 season, picking our best starting lineup.
-     You can see the difference in 3 key metrics- namely plus minus, field goal percentage and 3 point percentage.
-     We can pick the best starting lineup using these three key metrics.
+```  Using this tool we can analyse some key statistics in the NBA for the 2021-22 season, picking our best starting lineup. 
+You can see the difference in 3 key metrics- namely plus minus, field goal percentage and 3 point percentage.
+We can pick the best starting lineup using these three key metrics.
 ```
 """,True)
 
