@@ -32,7 +32,7 @@ roster = duplicate_roster.unique()
 # Allow user to select players randomly
 players = st.multiselect(
      'Select your players',
-     duplicate_roster)
+     roster)
 
 # Check if exactly 5 players are selected
 if len(players) == 5:
