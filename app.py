@@ -156,6 +156,7 @@ if len(players) == 5:
         st.write(f'<span style="color:pink; font-weight:bold; background-color:blue; padding: 5px;">{possible_lineup_message}</span>', unsafe_allow_html=True)
 
 else:
+    possible_lineup = df_team.loc[0, 'players_list_stripped']
     st.warning("Please select exactly 5 players for the lineup.")
     possible_lineup_message = f"Possible lineup: {possible_lineup}"
     st.write(f'<span style="color:pink; font-weight:bold; background-color:blue; padding: 5px;">{possible_lineup_message}</span>', unsafe_allow_html=True)
