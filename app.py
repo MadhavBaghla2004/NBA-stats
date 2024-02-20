@@ -13,9 +13,9 @@ df = pd.read_csv('NBAlineup.csv')
 # Title for app
 st.set_page_config(layout="wide")
 st.title('NBA Lineup Analysis Tool')
-st.write('Using this tool we can analyse some key statistics in the NBA, picking our best starting lineup.')
+st.write('Using this tool we can analyse some key statistics in the NBA for the 2021-22 season, picking our best starting lineup.')
 st.write('You can see the difference in 3 key metrics- namely plus minus, field goal percentage and 3 point percentage.')
-st.write('We can pick the best starting lineup using these key metrics.')
+st.write('We can pick the best starting lineup using these three key metrics.')
 
 
 # User chooses team
@@ -144,7 +144,7 @@ if len(players) == 5:
      
     else:
         possible_lineup = df_team.loc[0, 'players_list_stripped']
-        warning_message="This group of players did not play together this season, hence there is no data available.Please select a different group."
+        warning_message="This group of players did not play together this season, hence there is no data available. Please select a different group."
         possible_lineup_message = f"Possible lineup: {possible_lineup}"
         st.warning(warning_message)
         st.write(f'<span style="color:purple; font-weight:bold">{possible_lineup_message}</span>', unsafe_allow_html=True)
