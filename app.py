@@ -8,7 +8,10 @@ df = pd.read_csv('NBAlineup.csv')
 
 # Title for app
 st.set_page_config(layout="wide")
-st.title('NBA Lineup Analysis Tool ')
+st.title('NBA Lineup Analysis Tool')
+st.write('Using this tool we can analyse some key statistics in the NBA, picking our best starting lineup.')
+st.write('You can see the difference in 3 key metrics- namely plus minus, field goal percentage and 3 point percentage.')
+st.write('We can pick the best starting lineup using these key metrics.')
 
 # User chooses team
 team = st.selectbox(
