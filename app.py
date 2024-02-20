@@ -92,49 +92,49 @@ if len(players) == 5:
             fig.update_traces(marker=dict(size=20, opacity=1))
             st.plotly_chart(fig, use_container_width=True)
 
-            fig = px.scatter(df_team, x="PLUS_MINUS", y="GP", title="Scatter Plot of Plus/Minus vs. Games Played For the Squad",
+            fig2 = px.scatter(df_team, x="PLUS_MINUS", y="GP", title="Scatter Plot of Plus/Minus vs. Games Played For the Squad",
                             hover_data={'PLUS_MINUS': True, 'GP': True, 'GROUP_NAME': 'True'})
-            fig.update_traces(hovertemplate='Plus/Minus: %{x}<br>Games played: %{y}<br>Lineup: %{customdata[0]}')
-            fig.update_xaxes(title_text="PLUS/MINUS")
-            fig.update_yaxes(title_text="GAMES PLAYED")
+            fig2.update_traces(hovertemplate='Plus/Minus: %{x}<br>Games played: %{y}<br>Lineup: %{customdata[0]}')
+            fig2.update_xaxes(title_text="PLUS/MINUS")
+            fig2.update_yaxes(title_text="GAMES PLAYED")
             plus_minus_value = df_important['PLUS_MINUS'].values[0]
             gp_value = df_lineup['GP'].values[0]
             group_name = df_lineup['GROUP_NAME'].values[0]
-            fig.add_scatter(x=[plus_minus_value], y=[gp_value], mode="markers", marker=dict(color='green', size=10, opacity=1), name="Selected lineup", 
+            fig2.add_scatter(x=[plus_minus_value], y=[gp_value], mode="markers", marker=dict(color='green', size=10, opacity=1), name="Selected lineup", 
                text=[f"PLUS/MINUS: {plus_minus_value}<br>GAMES_PLAYED: {gp_value}<br>LINEUP: {group_name}"], hoverinfo="text")
-            fig.update_traces(marker=dict(size=20, opacity=1))
-            st.plotly_chart(fig, use_container_width=True)
+            fig2.update_traces(marker=dict(size=20, opacity=1))
+            st.plotly_chart(fig2, use_container_width=True)
 
 
           
 
-            fig_fg_pct = px.scatter(df_team, x="FG_PCT", y="GP", title="Scatter Plot of Field Goal Percentage vs. Games Played For the Squad",
+            fig3 = px.scatter(df_team, x="FG_PCT", y="GP", title="Scatter Plot of Field Goal Percentage vs. Games Played For the Squad",
                             hover_data={'FG_PCT': True, 'GP': True, 'GROUP_NAME': 'True'})
-            fig_fg_pct.update_traces(hovertemplate='Field Goal Percentage: %{x}<br>Games played: %{y}<br>Lineup: %{customdata[0]}')
-            fig_fg_pct.update_xaxes(title_text="Field Goal Percentage")
-            fig_fg_pct.update_yaxes(title_text="GAMES PLAYED")
+            fig3.update_traces(hovertemplate='Field Goal Percentage: %{x}<br>Games played: %{y}<br>Lineup: %{customdata[0]}')
+            fig3.update_xaxes(title_text="Field Goal Percentage")
+            fig3.update_yaxes(title_text="GAMES PLAYED")
             fg_pct_value = df_important['FG_PCT'].values[0]
             gp_value = df_lineup['GP'].values[0]
             group_name = df_lineup['GROUP_NAME'].values[0]
-            fig_fg_pct.add_scatter(x=[fg_pct_value], y=[gp_value], mode="markers", marker=dict(color='green', size=10, opacity=1), name="Selected lineup", 
+            fig3.add_scatter(x=[fg_pct_value], y=[gp_value], mode="markers", marker=dict(color='green', size=10, opacity=1), name="Selected lineup", 
                text=[f"Field Goal Percentage: {fg_pct_value}<br>GAMES_PLAYED: {gp_value}<br>LINEUP: {group_name}"], hoverinfo="text")
             mean_fg_pct = df_team['FG_PCT'].mean()
-            fig_fg_pct.add_vline(x=mean_fg_pct, line_dash="dot", line_color="red", annotation_text=f"Team Mean: {mean_fg_pct}", annotation_position="bottom right")
-            fig_fg_pct.update_traces(marker=dict(size=20, opacity=1))
-            st.plotly_chart(fig_fg_pct, use_container_width=True)
+            fig3.add_vline(x=mean_fg_pct, line_dash="dot", line_color="red", annotation_text=f"Team Mean: {mean_fg_pct}", annotation_position="bottom right")
+            fig3.update_traces(marker=dict(size=20, opacity=1))
+            st.plotly_chart(fig3, use_container_width=True)
 
-            fig_fg3_pct = px.scatter(df_team, x="FG3_PCT", y="GP", title="Scatter Plot of 3-Point Field Goal Percentage vs. Games Played For the Squad",
+            fig4 = px.scatter(df_team, x="FG3_PCT", y="GP", title="Scatter Plot of 3-Point Field Goal Percentage vs. Games Played For the Squad",
                             hover_data={'FG3_PCT': True, 'GP': True, 'GROUP_NAME': 'True'})
-            fig_fg3_pct.update_traces(hovertemplate='3-Point Field Goal Percentage: %{x}<br>Games played: %{y}<br>Lineup: %{customdata[0]}')
-            fig_fg3_pct.update_xaxes(title_text="3-Point Field Goal Percentage")
-            fig_fg3_pct.update_yaxes(title_text="GAMES PLAYED")
+            fig4.update_traces(hovertemplate='3-Point Field Goal Percentage: %{x}<br>Games played: %{y}<br>Lineup: %{customdata[0]}')
+            fig4.update_xaxes(title_text="3-Point Field Goal Percentage")
+            fig4.update_yaxes(title_text="GAMES PLAYED")
             fg3_pct_value = df_important['FG3_PCT'].values[0]
             gp_value = df_lineup['GP'].values[0]
             group_name = df_lineup['GROUP_NAME'].values[0]
-            fig_fg3_pct.add_scatter(x=[fg3_pct_value], y=[gp_value], mode="markers", marker=dict(color='green', size=10, opacity=1), name="Selected lineup", 
+            fig4.add_scatter(x=[fg3_pct_value], y=[gp_value], mode="markers", marker=dict(color='green', size=10, opacity=1), name="Selected lineup", 
                text=[f"3-Point Field Goal Percentage: {fg3_pct_value}<br>GAMES_PLAYED: {gp_value}<br>LINEUP: {group_name}"], hoverinfo="text")
-            fig_fg3_pct.update_traces(marker=dict(size=20, opacity=1))
-            st.plotly_chart(fig_fg3_pct, use_container_width=True)
+            fig4.update_traces(marker=dict(size=20, opacity=1))
+            st.plotly_chart(fig4, use_container_width=True)
 
 
 
