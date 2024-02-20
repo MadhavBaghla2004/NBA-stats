@@ -25,7 +25,7 @@ team = st.selectbox(
 
 df_team = df[df['team'] == team].reset_index(drop=True)
 df_team['players_list'] = df_team['players_list'].str.replace(r"[\"\' \[\]]", '').str.split(',')
-df_team['FG_PCT'] = round((df_team['FG_PCT'] * 100),2)
+df_team['FG_PCT'] = (df_team['FG_PCT'] * 100).round(2)
 df_team['FG3_PCT'] = (df_team['FG3_PCT'] * 100).round(2)
 duplicate_roster = df_team['players_list'].apply(pd.Series).stack()
 roster = duplicate_roster.unique()
