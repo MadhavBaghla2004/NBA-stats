@@ -119,7 +119,7 @@ if len(players) == 5:
             fig_fg_pct.add_scatter(x=[fg_pct_value], y=[gp_value], mode="markers", marker=dict(color='green', size=10, opacity=1), name="Selected lineup", 
                text=[f"Field Goal Percentage: {fg_pct_value}<br>GAMES_PLAYED: {gp_value}<br>LINEUP: {group_name}"], hoverinfo="text")
             mean_fg_pct = df_team['FG_PCT'].mean()
-            fig_fg_pct.add_hline(y=mean_fg_pct, line_dash="dot", line_color="red", annotation_text=f"Team Mean: {mean_fg_pct}", annotation_position="bottom right")
+            fig_fg_pct.add_vline(x=mean_fg_pct, line_dash="dot", line_color="red", annotation_text=f"Team Mean: {mean_fg_pct}", annotation_position="bottom right")
             fig_fg_pct.update_traces(marker=dict(size=20, opacity=1))
             st.plotly_chart(fig_fg_pct, use_container_width=True)
 
