@@ -90,6 +90,19 @@ if len(players) == 5:
             fig.update_traces(marker=dict(size=20, opacity=1))
             st.plotly_chart(fig, use_container_width=True)
 
+            fig_2 = px.scatter(df_team, x="PLUS_MINUS", y="GP", title="Scatter Plot of Plus-Minus vs. Games Played For the Squad",
+                            hover_data={'PLUS_MINUS': True, 'GP': True, 'GROUP_NAME': 'True'})
+            fig_2.update_traces(hovertemplate='Plus-Minus: %{x}<br>Games played: %{y}<br>Lineup: %{customdata[0]}')
+            fig_2.update_xaxes(title_text="PLUS-MINUS")
+            fig_2.update_yaxes(title_text="GAMES PLAYED")
+            min_value = df_important['PLUS_MINUS'].values[0]
+            gp_value = df_lineup['GP'].values[0]
+            group_name = df_lineup['GROUP_NAME'].values[0]
+            fig.add_scatter(x=[min_value], y=[gp_value], mode="markers", marker=dict(color='orange', size=10, opacity=1), name="Selected lineup", 
+                  text=[f"PLUS-MINUS: {min_value}<br>GAMES_PLAYED: {gp_value}<br>LINEUP: {group_name}"], hoverinfo="text")
+            fig.update_traces(marker=dict(size=20, opacity=1))
+            st.plotly_chart(fig, use_container_width=True)
+
             fig_2 = px.histogram(df_team, x="PLUS_MINUS")
             fig_2.add_vline(x=df_important['PLUS_MINUS'].values[0],line_color='red',name='Selected Players')
             fig_2.add_vline(x=df_team['PLUS_MINUS'].mean(),line_color='green',name='Team Mean')
