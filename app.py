@@ -54,7 +54,7 @@ if len(players) == 5:
      
         df_important = df_lineup[['MIN', 'PLUS_MINUS','FG_PCT', 'FG3_PCT']]
         df_important.reset_index(drop=True)
-        df_important['Stat'] = 'Value'
+        df_important['STAT'] = 'VALUE'
         df_important.set_index('Stat', inplace=True)
         st.write(df_important)
 
