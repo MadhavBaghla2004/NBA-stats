@@ -147,7 +147,7 @@ if len(players) == 5:
         warning_message="This group of players did not play together this season, hence there is no data available.Please select a different group."
         possible_lineup_message = f"Possible lineup: {possible_lineup}"
         st.warning(warning_message)
-        st.write(f'<span style="color:orange; font-weight:bold">{possible_lineup_message}</span>', unsafe_allow_html=True)
+        st.write(f'<span style="color:pink; font-weight:bold">{possible_lineup_message}</span>', unsafe_allow_html=True)
 
 else:
     st.warning("Please select exactly 5 players for the lineup.")
