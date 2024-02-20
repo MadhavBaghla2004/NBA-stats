@@ -84,15 +84,5 @@ add_bg_from_local('bg.png')
 
 
 
-# Example list of players
-roster = ['LeBron James', 'Kevin Durant', 'Stephen Curry', 'Giannis Antetokounmpo', 'James Harden']
-
-# Multiselect widget for player selection
-selected_players = st.multiselect(
-    'Select your players:',  # Prompt for the user
-    roster,                  # List of player names
-    roster[0:3]              # Initial selection (first three players)
-)
-
 
 
