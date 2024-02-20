@@ -26,7 +26,8 @@ duplicate_roster = df_team['players_list'].apply(pd.Series).stack()
 roster = duplicate_roster.unique()
 for player in roster:
     player=player.strip('[]')
-    st.write(player)
+roster = [player.strip('[]') for player in roster]
+print(roster)
 
 
 players = st.multiselect(
