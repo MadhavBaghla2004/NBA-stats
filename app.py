@@ -79,10 +79,9 @@ if len(players) == 5:
         col1, col2, col3, col4 = st.columns(4)
 
         with col1:
-            fig = px.bar(df_team, x="MIN", y="GP")
+            fig = px.scatter(df_team, x="MIN", y="GP", title="Scatter Plot of MIN vs. GP")
             fig.update_xaxes(title_text="MIN")
             fig.update_yaxes(title_text="GP")
-            fig.update_layout(title="Bar Graph of MIN vs. GP")
             st.plotly_chart(fig, use_container_width=True)
 
         with col2:
