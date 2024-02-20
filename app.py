@@ -21,19 +21,12 @@ team = st.selectbox(
      'Choose Your Team:',
      df['team'].unique())
 
-# Get just the selected team
+
 df_team = df[df['team'] == team].reset_index(drop=True)
-
-# Clean up player names
 df_team['players_list'] = df_team['players_list'].str.replace(r"[\"\' \[\]]", '').str.split(',')
-
-# Apply .stack() to explode the list into separate rows and then get unique names
 duplicate_roster = df_team['players_list'].apply(pd.Series).stack().unique()
-
-# Clean up player names and ensure uniqueness
-roster = [player.replace('[', '').replace(']', '').strip("'").replace("'", "") for player in duplicate_roster]
-
-# Now roster should contain unique player names
+roster = set(duplicate_roster)
+roster = [player.replace('[', '').replace(']', '').strip("'").replace("'", "") for player in roster]
 
 
 
