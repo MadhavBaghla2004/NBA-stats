@@ -29,8 +29,7 @@ roster = [player.replace('[', '').replace(']', '').strip("'").replace("'", "") f
 
 
 
-
-# Allow user to select players randomly
+# Allow user to select players randomly without a default selection
 players = st.multiselect(
      'Select your players',
      roster)
@@ -77,6 +76,8 @@ if len(players) == 5:
         st.warning("No lineup found for the selected players.")
 else:
     st.warning("Please select exactly 5 players for the lineup.")
+
+
 
 
 
