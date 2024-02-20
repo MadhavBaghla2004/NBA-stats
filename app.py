@@ -30,7 +30,6 @@ roster = [player.replace('[', '').replace(']', '').strip("'").replace("'", "") f
 
 
 
-
 # Allow user to select players randomly
 players = st.multiselect(
      'Select your players',
