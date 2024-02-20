@@ -36,8 +36,8 @@ st.write(new_roster)
 
 players = st.multiselect(
      'Select your players',
-     roster,
-     roster[0:5])
+     new_roster,
+     new_roster[0:5])
 
 if len(players) == 5:
     # Find the right line up
