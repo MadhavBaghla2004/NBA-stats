@@ -145,8 +145,8 @@ if len(players) == 5:
     else:
         possible_lineup = df_team.loc[0, 'players_list_stripped']
         warning_message = (
-            "This group of players did not play together this season, hence there is no data available. \n"
-            "Please select a different group. \n"
+            "This group of players did not play together this season, hence there is no data available.\n"
+            "Please select a different group.\n"
             f"Possible lineup: {possible_lineup}"
         )
         st.warning(warning_message)
