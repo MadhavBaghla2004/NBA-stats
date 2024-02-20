@@ -27,8 +27,7 @@ df_team = df[df['team'] == team].reset_index(drop=True)
 df_team['players_list'] = df_team['players_list'].str.replace(r"[\"\' \[\]]", '').str.split(',')
 duplicate_roster = df_team['players_list'].apply(pd.Series).stack()
 roster = set(duplicate_roster)
-# Ensure player names in roster match the formatting in df_team
-roster = roster.replace('[', '').replace(']', '').strip("'").replace("'", "").tolist()
+roster = [player.replace('[', '').replace(']', '').strip("'").replace("'", "") for player in roster]
 
 
 
