@@ -29,7 +29,6 @@ duplicate_roster = df_team['players_list'].apply(pd.Series).stack()
 roster = duplicate_roster.unique()
 roster = [player.replace('[', '').replace(']', '').strip().strip("'").replace("'", "") for player in roster]
 roster = list(set(roster))
-st.write(roster)
 
 
 
@@ -46,7 +45,7 @@ st.write(set(players))
 if len(players) == 5:
     df_team['players_list_stripped'] = df_team['players_list'].apply(lambda x: [p.replace('[', '').replace(']', '').strip("'").replace("'", "") for p in x])
     # Filter df_team based on FG_PCT matching for a given set of players
-    df_lineup = df_team[df_team['players_list_stripped'].apply(lambda x: st.write(x))]
+    df_lineup = df_team[df_team['players_list_stripped'].apply(lambda x: set(players).issubset(x))]
 
     st.write(df_lineup)
 
