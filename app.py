@@ -37,14 +37,14 @@ players = st.multiselect(
      'Select your players',
      roster)
 
+st.write(players)
+
 
 # Check if exactly 5 players are selected
 if len(players) == 5:
     df_team['players_list_stripped'] = df_team['players_list'].apply(lambda x: [p.replace('[', '').replace(']', '').strip("'").replace("'", "") for p in x])
     # Filter df_team based on FG_PCT matching for a given set of players
-    df_lineup = df_team[df_team['players_list_stripped'].apply(
-      lambda x: all(df_team.loc[df_team['players_list_stripped'] == x, 'FG_PCT'] == df_team.loc[df_team['players_list_stripped'].apply(set(players).issubset), 'FG_PCT'])
-     )]
+    df_lineup = df_team[df_team['players_list_stripped'].apply(lambda x: set(x)==set(players))]
 
     st.write(df_lineup)
 
