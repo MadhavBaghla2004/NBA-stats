@@ -22,7 +22,7 @@ team = st.selectbox(
 df_team = df[df['team'] == team].reset_index(drop=True)
 # Get players on roster
 df_team['players_list'] = df_team['players_list'].str.replace(r"[\"\' \[\]]", '').str.split(',')
-roster = [player.strip() for sublist in df_team['players_list'] for player in sublist]
+roster = duplicate_roster.unique()
 
 players = st.multiselect(
      'Select your players',
