@@ -28,39 +28,45 @@ df_team['players_list'] = df_team['players_list'].str.replace(r"[\"\' \[\]]", ''
 duplicate_roster = df_team['players_list'].apply(pd.Series).stack()
 roster = duplicate_roster.unique()
 
+# Allow user to select players randomly
 players = st.multiselect(
      'Select your players',
      roster)
 
+# Check if exactly 5 players are selected
 if len(players) == 5:
-    # Find the right line up
+    # Find the lineup that matches the selected players
     df_lineup = df_team[df_team['players_list'].apply(lambda x: set(x) == set(players))]
 
-    df_important = df_lineup[['MIN', 'PLUS_MINUS','FG_PCT', 'FG3_PCT']]
+    # Check if a lineup is found
+    if not df_lineup.empty:
+        df_important = df_lineup[['MIN', 'PLUS_MINUS','FG_PCT', 'FG3_PCT']]
 
-    st.dataframe(df_important)
+        st.dataframe(df_important)
 
-    col1, col2, col3, col4 = st.columns(4)
+        col1, col2, col3, col4 = st.columns(4)
 
-    with col1:
-        fig_min = px.histogram(df_team, x="MIN")
-        fig_min.add_vline(x=df_important['MIN'].values[0],line_color='red')
-        st.plotly_chart(fig_min, use_container_width=True)
+        with col1:
+            fig_min = px.histogram(df_team, x="MIN")
+            fig_min.add_vline(x=df_important['MIN'].values[0],line_color='red')
+            st.plotly_chart(fig_min, use_container_width=True)
 
-    with col2:
-        fig_2 = px.histogram(df_team, x="PLUS_MINUS")
-        fig_2.add_vline(x=df_important['PLUS_MINUS'].values[0],line_color='red')
-        st.plotly_chart(fig_2, use_container_width=True)
+        with col2:
+            fig_2 = px.histogram(df_team, x="PLUS_MINUS")
+            fig_2.add_vline(x=df_important['PLUS_MINUS'].values[0],line_color='red')
+            st.plotly_chart(fig_2, use_container_width=True)
 
-    with col3:
-        fig_3 = px.histogram(df_team, x="FG_PCT")
-        fig_3.add_vline(x=df_important['FG_PCT'].values[0],line_color='red')
-        st.plotly_chart(fig_3, use_container_width=True)
+        with col3:
+            fig_3 = px.histogram(df_team, x="FG_PCT")
+            fig_3.add_vline(x=df_important['FG_PCT'].values[0],line_color='red')
+            st.plotly_chart(fig_3, use_container_width=True)
 
-    with col4:
-        fig_4 = px.histogram(df_team, x="FG3_PCT")
-        fig_4.add_vline(x=df_important['FG3_PCT'].values[0],line_color='red')
-        st.plotly_chart(fig_4, use_container_width=True)
+        with col4:
+            fig_4 = px.histogram(df_team, x="FG3_PCT")
+            fig_4.add_vline(x=df_important['FG3_PCT'].values[0],line_color='red')
+            st.plotly_chart(fig_4, use_container_width=True)
+    else:
+        st.warning("No lineup found for the selected players.")
 else:
     st.warning("Please select exactly 5 players for the lineup.")
 
