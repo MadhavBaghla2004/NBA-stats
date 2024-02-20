@@ -79,6 +79,7 @@ if len(players) == 5:
             fig_min = px.histogram(df_team, x="MIN")
             fig_min.add_vline(x=df_important['MIN'].values[0],line_color='red',name='Selected Players')
             fig_min.add_vline(x=df_team['MIN'].mean(),line_color='green',name='Team Mean')
+            fig_min.update_layout(hovermode='x')  
             st.plotly_chart(fig_min, use_container_width=True)
 
         with col2:
