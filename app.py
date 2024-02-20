@@ -55,6 +55,8 @@ if len(players) == 5:
         df_important = df_lineup[['MIN', 'PLUS_MINUS','FG_PCT', 'FG3_PCT']].reset_index(drop=True)
         df_display=df_important.copy()
         df_display.columns = ['MINUTES', 'PLUS_MINUS', 'FG_PERCENTAGE', '3_POINT_PERCENTAGE']
+        df_display['FG_PERCENTAGE'] *= 100
+        df_display['FG3_PERCENTAGE'] *= 100
         df_display['STAT'] = 'VALUE'
         df_display.set_index('STAT', inplace=True)
         st.markdown(
