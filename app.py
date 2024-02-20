@@ -25,7 +25,6 @@ team = st.selectbox(
 
 df_team = df[df['team'] == team].reset_index(drop=True)
 df_team['players_list'] = df_team['players_list'].str.replace(r"[\"\' \[\]]", '').str.split(',')
-st.write(df_team)
 duplicate_roster = df_team['players_list'].apply(pd.Series).stack()
 roster = duplicate_roster.unique()
 roster = [player.replace('[', '').replace(']', '').strip().strip("'").replace("'", "") for player in roster]
@@ -48,6 +47,7 @@ if len(players) == 5:
     df_team['players_list_stripped'] = df_team['players_list'].apply(lambda x: [p.replace('[', '').replace(']', '').strip().strip("'").replace("'", "")for p in x])
     # Filter df_team based on FG_PCT matching for a given set of players
     df_lineup = df_team[df_team['players_list_stripped'].apply(lambda x: set(x)==set(players))]
+    st.write(df_lineup)
 
   
 
