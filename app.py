@@ -57,7 +57,19 @@ if len(players) == 5:
         df_display.columns = ['MINUTES', 'PLUS_MINUS', 'FG_PERCENTAGE', '3_POINT_PERCENTAGE']
         df_display['STAT'] = 'VALUE'
         df_display.set_index('STAT', inplace=True)
-        st.write(df_display)
+        st.markdown(
+   """
+    <style>
+    table {
+        color: white;
+        background-color: #333333;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+        st.table(df_display)
 
         
 
