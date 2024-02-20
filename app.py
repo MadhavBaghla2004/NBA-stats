@@ -24,12 +24,11 @@ team = st.selectbox(
 
 df_team = df[df['team'] == team].reset_index(drop=True)
 df_team['players_list'] = df_team['players_list'].str.replace(r"[\"\' \[\]]", '').str.split(',')
+st.write(df_team)
 duplicate_roster = df_team['players_list'].apply(pd.Series).stack()
 roster = duplicate_roster.unique()
 roster = [player.replace('[', '').replace(']', '').strip().strip("'").replace("'", "") for player in roster]
 roster = list(set(roster))
-
-
 
 
 
@@ -39,7 +38,7 @@ players = st.multiselect(
      'Select your players',
      roster)
 
-
+st.write(set(players))
 
 
 # Check if exactly 5 players are selected
@@ -48,6 +47,7 @@ if len(players) == 5:
     # Filter df_team based on FG_PCT matching for a given set of players
     df_lineup = df_team[df_team['players_list_stripped'].apply(lambda x: set(x)==set(players))]
 
+    st.write(df_lineup)
 
     # Check if a lineup is found
     if not df_lineup.empty:
@@ -105,6 +105,11 @@ def add_bg_from_local(image_file):
     unsafe_allow_html=True
     )
 add_bg_from_local('bg.png')
+
+
+
+
+
 
 
 
