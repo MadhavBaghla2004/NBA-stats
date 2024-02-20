@@ -159,6 +159,7 @@ else:
     possible_lineup = df_team.loc[0, 'players_list']
     formatted_lineup = [player.replace('[', '').replace(']', '').strip().strip("'").replace("'", "") for player in possible_lineup]
     formatted_lineup_str = ', '.join(formatted_lineup)
+    formatted_lineup = ', '.join(possible_lineup)
     st.warning("Please select exactly 5 players for the lineup.")
     possible_lineup_message = f"Possible lineup: {formatted_lineup}"
     st.write(f'<span style="color:pink; font-weight:bold; background-color:blue; padding: 5px;">{possible_lineup_message}</span>', unsafe_allow_html=True)
