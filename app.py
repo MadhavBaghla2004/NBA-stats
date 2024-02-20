@@ -23,7 +23,8 @@ df_team = df[df['team'] == team].reset_index(drop=True)
 # Get players on roster
 df_team['players_list'] = df_team['players_list'].str.replace(r"[\"\' \[\]]", '').str.split(',')
 duplicate_roster = df_team['players_list'].apply(pd.Series).stack()
-roster = [player.strip("[]") for player in duplicate_roster.unique()]
+roster = [str(player) for player in duplicate_roster.unique()]
+
 
 
 players = st.multiselect(
