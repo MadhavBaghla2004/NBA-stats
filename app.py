@@ -27,8 +27,8 @@ df_team = df[df['team'] == team].reset_index(drop=True)
 df_team['players_list'] = df_team['players_list'].str.replace(r"[\"\' \[\]]", '').str.split(',')
 duplicate_roster = df_team['players_list'].apply(pd.Series).stack()
 roster = duplicate_roster.unique()
-roster = [player.replace('[', '').replace(']', '') for player in roster]
-
+# Ensure player names in roster match the formatting in df_team
+roster = [player.replace('[', '').replace(']', '') for player in duplicate_roster.unique()]
 
 # Allow user to select players randomly
 players = st.multiselect(
@@ -38,7 +38,9 @@ players = st.multiselect(
 # Check if exactly 5 players are selected
 if len(players) == 5:
     # Find the lineup that matches the selected players
-    df_lineup = df_team[df_team['players_list'].apply(lambda x: set(x) == set(players))]
+    # Ensure that player names in df_team are stripped of square brackets too
+    df_team['players_list_stripped'] = df_team['players_list'].apply(lambda x: [p.replace('[', '').replace(']', '') for p in x])
+    df_lineup = df_team[df_team['players_list_stripped'].apply(lambda x: set(x) == set(players))]
 
     # Check if a lineup is found
     if not df_lineup.empty:
@@ -71,6 +73,7 @@ if len(players) == 5:
         st.warning("No lineup found for the selected players.")
 else:
     st.warning("Please select exactly 5 players for the lineup.")
+
 
 
 
