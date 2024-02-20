@@ -27,7 +27,8 @@ df_team['players_list'] = df_team['players_list'].str.replace(r"[\"\' \[\]]", ''
 st.write(df_team)
 duplicate_roster = df_team['players_list'].apply(pd.Series).stack()
 roster = duplicate_roster.unique()
-roster = [player.replace('[', '').replace(']', '').strip("'").replace("'", "") for player in roster]
+roster = [player.replace('[', '').replace(']', '').strip().strip("'").replace("'", "") for player in roster]
+st.write(roster)
 
 
 
