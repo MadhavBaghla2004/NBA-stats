@@ -24,7 +24,6 @@ team = st.selectbox(
 
 df_team = df[df['team'] == team].reset_index(drop=True)
 df_team['players_list'] = df_team['players_list'].str.replace(r"[\"\' \[\]]", '').str.split(',')
-st.write(df_team)
 duplicate_roster = df_team['players_list'].apply(pd.Series).stack()
 roster = duplicate_roster.unique()
 roster = [player.replace('[', '').replace(']', '').strip("'").replace("'", "") for player in roster]
@@ -43,6 +42,7 @@ if len(players) == 5:
     df_team['players_list_stripped'] = df_team['players_list'].apply(lambda x: [p.replace('[', '').replace(']', '').strip("'").replace("'", "") for p in x])
     st.write(df_team)
     df_lineup = df_team[df_team['players_list_stripped'].apply(lambda x: set(players).issubset(x))]
+    st.write(df_lineup)
 
     # Check if a lineup is found
     if not df_lineup.empty:
