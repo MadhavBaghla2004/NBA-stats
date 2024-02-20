@@ -56,7 +56,7 @@ if len(players) == 5:
         df_important.reset_index(drop=True)
         df_important['STAT'] = 'VALUE'
         df_important.set_index('STAT', inplace=True)
-        st.write(df_important)
+        st.table(df_important)
 
         
 
