@@ -82,10 +82,6 @@ if len(players) == 5:
             fig = px.scatter(df_team, x="MIN", y="GP", title="Scatter Plot of MIN vs. GP")
             fig.update_xaxes(title_text="MIN")
             fig.update_yaxes(title_text="GP")
-            min_value = df_important['MIN'].values[0]
-            gp_value = df_important['GP'].values[0]
-            fig.add_scatter(x=[min_value], y=[gp_value], mode="markers", marker=dict(color='green'), name="MIN Value", 
-                text=[f"MIN: {min_value}<br>GP: {gp_value}"], hoverinfo="text")
             st.plotly_chart(fig, use_container_width=True)
 
         with col2:
