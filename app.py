@@ -16,43 +16,53 @@ st.write('You can see the difference in 3 key metrics- namely plus minus, field 
 st.write('We can pick the best starting lineup using these key metrics.')
 
 
+# User chooses team
+team = st.selectbox(
+     'Choose Your Team:',
+     df['team'].unique())
 
-# Ask user to select a team
-selected_team = st.selectbox('Select a team', df['team'].unique())
+# Get just the selected team
+df_team = df[df['team'] == team].reset_index(drop=True)
+# Get players on roster
+df_team['players_list'] = df_team['players_list'].str.replace(r"[\"\' \[\]]", '').str.split(',')
+duplicate_roster = df_team['players_list'].apply(pd.Series).stack()
+roster = duplicate_roster.unique()
 
-# Filter the dataset based on the selected team
-team_df = df[df['team'] == selected_team]
+players = st.multiselect(
+     'Select your players',
+     roster)
 
-# Extract players from the selected team's lineup
-players_list = team_df['players_list'].iloc[0]  # Assuming each lineup is a string with players separated by comma
-players = [player.strip() for player in players_list.split(',')]  # Convert string to list of players
+if len(players) == 5:
+    # Find the right line up
+    df_lineup = df_team[df_team['players_list'].apply(lambda x: set(x) == set(players))]
 
-# Allow user to select 5 players from the team's lineup
-selected_players = st.multiselect('Select 5 players', players)
+    df_important = df_lineup[['MIN', 'PLUS_MINUS','FG_PCT', 'FG3_PCT']]
 
-if len(selected_players) == 5:
-    # Calculate league average of PLUS_MINUS, FG_PCT, FG3_PCT
-    league_avg_plus_minus = df['PLUS_MINUS'].mean()
-    league_avg_fg_pct = df['FG_PCT'].mean()
-    league_avg_fg3_pct = df['FG3_PCT'].mean()
+    st.dataframe(df_important)
 
-    # Visualize selected players' statistics in comparison to league average
-    selected_players_df = team_df[team_df['players_list'].apply(lambda x: set(x.split(',')) == set(selected_players))]
-    selected_players_plus_minus_avg = selected_players_df['PLUS_MINUS'].mean()
-    selected_players_fg_pct_avg = selected_players_df['FG_PCT'].mean()
-    selected_players_fg3_pct_avg = selected_players_df['FG3_PCT'].mean()
+    col1, col2, col3, col4 = st.columns(4)
 
-    st.write(f"League average PLUS_MINUS: {league_avg_plus_minus}")
-    st.write(f"League average FG_PCT: {league_avg_fg_pct}")
-    st.write(f"League average FG3_PCT: {league_avg_fg3_pct}")
+    with col1:
+        fig_min = px.histogram(df_team, x="MIN")
+        fig_min.add_vline(x=df_important['MIN'].values[0],line_color='red')
+        st.plotly_chart(fig_min, use_container_width=True)
 
-    st.write(f"Selected players' average PLUS_MINUS: {selected_players_plus_minus_avg}")
-    st.write(f"Selected players' average FG_PCT: {selected_players_fg_pct_avg}")
-    st.write(f"Selected players' average FG3_PCT: {selected_players_fg3_pct_avg}")
+    with col2:
+        fig_2 = px.histogram(df_team, x="PLUS_MINUS")
+        fig_2.add_vline(x=df_important['PLUS_MINUS'].values[0],line_color='red')
+        st.plotly_chart(fig_2, use_container_width=True)
 
-    # You can further visualize the comparison using plots or charts
+    with col3:
+        fig_3 = px.histogram(df_team, x="FG_PCT")
+        fig_3.add_vline(x=df_important['FG_PCT'].values[0],line_color='red')
+        st.plotly_chart(fig_3, use_container_width=True)
+
+    with col4:
+        fig_4 = px.histogram(df_team, x="FG3_PCT")
+        fig_4.add_vline(x=df_important['FG3_PCT'].values[0],line_color='red')
+        st.plotly_chart(fig_4, use_container_width=True)
 else:
-    st.warning("Please select exactly 5 players.")
+    st.warning("Please select exactly 5 players for the lineup.")
 
 
 def add_bg_from_local(image_file):
