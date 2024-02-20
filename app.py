@@ -25,8 +25,8 @@ team = st.selectbox(
 
 df_team = df[df['team'] == team].reset_index(drop=True)
 df_team['players_list'] = df_team['players_list'].str.replace(r"[\"\' \[\]]", '').str.split(',')
-df_team['FG_PCT'] = (df_team['FG_PCT'] * 100).round(2)
-df_team['FG3_PCT'] = (df_team['FG3_PCT'] * 100).round(2)
+df_team['FG_PCT'] *= 100
+df_team['FG3_PCT'] *= 100
 duplicate_roster = df_team['players_list'].apply(pd.Series).stack()
 roster = duplicate_roster.unique()
 roster = [player.replace('[', '').replace(']', '').strip().strip("'").replace("'", "") for player in roster]
@@ -58,8 +58,8 @@ if len(players) == 5:
      
         df_important = df_lineup[['MIN', 'PLUS_MINUS','FG_PCT', 'FG3_PCT']].reset_index(drop=True)
         df_display=df_important.copy()
-        df_display['FG_PCT'] = (df_display['FG_PCT'] * 100).round(2)
-        df_display['FG3_PCT'] = (df_display['FG3_PCT'] * 100).round(2)
+        df_display['FG_PCT'] *= 100
+        df_display['FG3_PCT'] *= 100
         df_display.columns = ['MINUTES', 'PLUS_MINUS', 'FG_PERCENTAGE', '3_POINT_PERCENTAGE']
 
         df_display['STAT'] = 'VALUE'
