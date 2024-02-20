@@ -28,7 +28,7 @@ players_list = team_df['players_list'].iloc[0]  # Assuming each lineup is a stri
 players = [player.strip() for player in players_list.split(',')]  # Convert string to list of players
 
 # Allow user to select 5 players from the team's lineup
-selected_players = st.multiselect('Select 5 players', players, players[:5])
+selected_players = st.multiselect('Select 5 players', players)
 
 if len(selected_players) == 5:
     # Calculate league average of PLUS_MINUS, FG_PCT, FG3_PCT
