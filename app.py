@@ -38,7 +38,6 @@ players = st.multiselect(
 if len(players) == 5:
     df_team['players_list_stripped'] = df_team['players_list'].apply(lambda x: [p.replace('[', '').replace(']', '').strip("'").replace("'", "") for p in x])
     df_split = df_team['players_list_stripped'].str.split(',').apply(pd.Series) 
-    df_split = df_split.applymap(lambda x: x.strip("'").replace("'", ""))
     df_lineup = df_team[df_split.apply(lambda r: all(p in r for p in players), axis=1)]
     # Check if a lineup is found
     if not df_lineup.empty:
