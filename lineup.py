@@ -62,4 +62,4 @@ for i in team_dict:
 
 league_lineup['players_list'] = league_lineup['GROUP_NAME'].str.split(' - ')
 league_lineup = league_lineup.sort_values(by='team')
-league_lineup.to_csv('NBALineup2021.csv')
+league_lineup.to_csv('NBAlineup.csv')
