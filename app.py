@@ -27,7 +27,7 @@ roster = duplicate_roster.unique()
 
 players = st.multiselect(
      'Select your players',
-     roster,
+     [player.strip() for player in roster], 
      roster[0:5])
 
 if len(players) == 5:
