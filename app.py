@@ -58,3 +58,16 @@ if len(players) == 5:
 else:
     st.write("Please select exactly 5 players for the lineup.")
 
+# Custom CSS to set background image
+st.markdown(
+    """
+    <style>
+    .reportview-container {
+        background: url('https://wallpapercave.com/wp/wp7113221.jpg') no-repeat center center fixed;
+        background-size: cover;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
