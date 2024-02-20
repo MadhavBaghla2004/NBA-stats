@@ -92,6 +92,5 @@ selected_players = st.multiselect(
     roster[0:3]              # Initial selection (first three players)
 )
 
-# Display the selected players
-st.write('Selected players:', selected_players)
+
 
