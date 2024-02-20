@@ -29,7 +29,7 @@ duplicate_roster = df_team['players_list'].apply(pd.Series).stack()
 roster = duplicate_roster.unique()
 # Ensure player names in roster match the formatting in df_team
 roster = [player.replace('[', '').replace(']', '') for player in duplicate_roster.unique()]
-roster = [player.strip("'").strip("'") for player in roster]
+roster = [player.strip("'").replace("'", "") for player in roster]
 
 
 # Allow user to select players randomly
