@@ -39,8 +39,7 @@ roster.sort()
 # Allow user to select players randomly without a default selection
 players = st.multiselect(
      'Select your players',
-     roster,
-     roster[0:5])
+     roster)
 
 
 
