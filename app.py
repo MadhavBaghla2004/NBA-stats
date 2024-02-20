@@ -53,15 +53,16 @@ if len(players) == 5:
     if not df_lineup.empty:
      
         df_important = df_lineup[['MIN', 'PLUS_MINUS','FG_PCT', 'FG3_PCT']].reset_index(drop=True)
-        df_important.rename(columns={
+        df_display=df_importnat.copy()
+        df_display.rename(columns={
         'MIN': 'MINUTES',
         'PLUS_MINUS': 'PLUS_MINUS',
          'FG_PCT': 'FG_PERCENTAGE',
           'FG3_PCT': '3_POINT_PERCENTAGE'
          }, inplace=True)
-        df_important['STAT'] = 'VALUE'
-        df_important.set_index('STAT', inplace=True)
-        st.write(df_important)
+        df_display['STAT'] = 'VALUE'
+        df_display.set_index('STAT', inplace=True)
+        st.write(df_display)
 
         
 
