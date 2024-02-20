@@ -84,7 +84,7 @@ if len(players) == 5:
             gp_value = df_lineup['GP'].values[0]
             fig.add_scatter(x=[min_value], y=[gp_value], mode="markers", marker=dict(color='green'), name="Selected lineup", 
                 text=[f"MIN: {min_value}<br>GP: {gp_value}"], hoverinfo="text")
-            fig.update_traces(marker=dict(size=6, opacity=0.5))
+            fig.update_traces(marker=dict(size=10, opacity=1))
             st.plotly_chart(fig, use_container_width=True)
 
             fig_2 = px.histogram(df_team, x="PLUS_MINUS")
