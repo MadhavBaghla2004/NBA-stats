@@ -83,7 +83,7 @@ if len(players) == 5:
             fig.update_xaxes(title_text="MIN")
             fig.update_yaxes(title_text="GP")
             fig.update_layout(title="Bar Graph of MIN vs. GP")
-            st.plotly_chart(fig_min, use_container_width=True)
+            st.plotly_chart(fig, use_container_width=True)
 
         with col2:
             fig_2 = px.histogram(df_team, x="PLUS_MINUS")
