@@ -37,7 +37,7 @@ players = st.multiselect(
      'Select your players',
      roster)
 
-st.write(players)
+st.write(set(players))
 
 
 # Check if exactly 5 players are selected
