@@ -27,8 +27,7 @@ roster = duplicate_roster.unique()
 
 players = st.multiselect(
      'Select your players',
-     roster,
-     [player.strip() for player in roster[0:5]])
+     roster[0:5])
 
 if len(players) == 5:
     # Find the right line up
