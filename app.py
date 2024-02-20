@@ -34,6 +34,8 @@ players = st.multiselect(
      'Select your players',
      roster)
 
+st.write(players)
+
 # Check if exactly 5 players are selected
 if len(players) == 5:
     df_team['players_list_stripped'] = df_team['players_list'].apply(lambda x: [p.replace('[', '').replace(']', '').strip("'").replace("'", "") for p in x])
