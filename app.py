@@ -51,8 +51,8 @@ if len(players) == 5:
 
     # Check if a lineup is found
     if not df_lineup.empty:
-        df_important = df_lineup[['MIN', 'PLUS_MINUS', 'FG_PCT', 'FG3_PCT']]
-        st.dataframe(df_important, index=False)
+        df_important = df_lineup[['MIN', 'PLUS_MINUS', 'FG_PCT', 'FG3_PCT']].reset_index(drop=True)
+        st.dataframe(df_important)
 
 
         col1, col2, col3, col4 = st.columns(4)
