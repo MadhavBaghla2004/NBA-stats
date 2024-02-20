@@ -29,7 +29,7 @@ for player in roster:
     player = player.strip('[]')
     new_roster.append(player)
 
-print(new_roster)
+st.write(new_roster)
 
     
 
