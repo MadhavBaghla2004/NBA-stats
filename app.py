@@ -75,6 +75,33 @@ if len(players) == 5:
 
         st.table(df_display)
 
+        col1, col2, col3, col4 = st.columns(4)
+
+        with col1:
+            fig_min = px.histogram(df_team, x="MIN")
+            fig_min.add_vline(x=df_important['MIN'].values[0],line_color='red',name='Selected Players')
+            fig_min.add_vline(x=df_team['MIN'].mean(),line_color='green',name='Team Mean')
+            fig_min.update_layout(hovermode='x')  
+            st.plotly_chart(fig_min, use_container_width=True)
+
+        with col2:
+            fig_2 = px.histogram(df_team, x="PLUS_MINUS")
+            fig_2.add_vline(x=df_important['PLUS_MINUS'].values[0],line_color='red',name='Selected Players')
+            fig_2.add_vline(x=df_team['PLUS_MINUS'].mean(),line_color='green',name='Team Mean')
+            st.plotly_chart(fig_2, use_container_width=True)
+
+        with col3:
+            fig_3 = px.histogram(df_team, x="FG_PCT")
+            fig_3.add_vline(x=df_important['FG_PCT'].values[0],line_color='red',name='Selected Players')
+            fig_3.add_vline(x=df_team['FG_PCT'].mean(),line_color='green',name='Team Mean')
+            st.plotly_chart(fig_3, use_container_width=True)
+
+        with col4:
+            fig_4 = px.histogram(df_team, x="FG3_PCT")
+            fig_4.add_vline(x=df_important['FG3_PCT'].values[0],line_color='red',name='Selected Players')
+            fig_4.add_vline(x=df_team['FG3_PCT'].mean(),line_color='green',name='Team Mean')
+            st.plotly_chart(fig_4, use_container_width=True)
+
         
 
      
