@@ -33,8 +33,7 @@ roster = [player.replace('[', '').replace(']', '').strip("'").replace("'", "") f
 # Allow user to select players randomly
 players = st.multiselect(
      'Select your players',
-     roster,
-     roster[0:5])
+     roster)
 
 # Check if exactly 5 players are selected
 if len(players) == 5:
