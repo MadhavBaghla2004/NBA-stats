@@ -83,7 +83,8 @@ if len(players) == 5:
             fig.update_xaxes(title_text="MIN")
             fig.update_yaxes(title_text="GP")
             min_value = df_important['MIN'].values[0]
-            fig.add_scatter(x=[min_value], mode="markers", marker=dict(color='green', size=10), name="MINUTES FOR THIS TEAM")
+            gp_value = df_lineup['GP'].values[0]
+            fig.add_scatter(x=[min_value], y=[gp_value], mode="markers", marker=dict(color='green', size=10), name="MIN Value")
             st.plotly_chart(fig, use_container_width=True)
 
         with col2:
