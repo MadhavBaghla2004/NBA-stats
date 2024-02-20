@@ -53,9 +53,7 @@ if len(players) == 5:
     if not df_lineup.empty:
      
         df_important = df_lineup[['MIN', 'PLUS_MINUS','FG_PCT', 'FG3_PCT']]
-        df_display = df_important.reset_index(drop=True)
-        df_display.reset_index(drop=True, inplace=True)
-        st.table(df_display[['MIN', 'PLUS_MINUS', 'FG_PCT', 'FG3_PCT']])
+        st.write(df_important)
 
         
 
