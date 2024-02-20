@@ -77,7 +77,8 @@ if len(players) == 5:
         st.table(df_display)
 
         with st.container():
-            fig = px.scatter(df_team, x="MIN", y="GP", title="Scatter Plot of Minutes vs. Games Played For the Squad")
+            fig = px.scatter(df_team, x="MIN", y="GP", title="Scatter Plot of Minutes vs. Games Played For the Squad",
+                            hover_data={'MIN': True, 'GP': True, 'GROUP_NAME': 'Lineup'})
             fig.update_traces(text=[f'Minutes: {x}<br>Games played: {y}<br>Lineup: {z}' 
                         for x, y, z in zip(df_team['MIN'], df_team['GP'], df_team['GROUP_NAME'])])
             fig.update_xaxes(title_text="MINUTES")
