@@ -80,15 +80,13 @@ if len(players) == 5:
 
         with col1:
             fig = px.bar(df_team, x="MIN", y="GP")
-            fig_min.add_vline(x=df_important['MIN'].values[0],line_color='red',name='Selected Players')
-            fig_min.add_vline(x=df_team['MIN'].mean(),line_color='green',name='Team Mean')
-            fig_min.update_layout(hovermode='x')  
             st.plotly_chart(fig_min, use_container_width=True)
 
         with col2:
             fig_2 = px.histogram(df_team, x="PLUS_MINUS")
             fig_2.add_vline(x=df_important['PLUS_MINUS'].values[0],line_color='red',name='Selected Players')
             fig_2.add_vline(x=df_team['PLUS_MINUS'].mean(),line_color='green',name='Team Mean')
+            fig_2.update_layout(hovermode='x')  
             st.plotly_chart(fig_2, use_container_width=True)
 
         with col3:
