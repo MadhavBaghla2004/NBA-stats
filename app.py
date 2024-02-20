@@ -103,11 +103,7 @@ if len(players) == 5:
             fig.update_traces(marker=dict(size=20, opacity=1))
             st.plotly_chart(fig, use_container_width=True)
 
-            fig_2 = px.histogram(df_team, x="PLUS_MINUS")
-            fig_2.add_vline(x=df_important['PLUS_MINUS'].values[0],line_color='red',name='Selected Players')
-            fig_2.add_vline(x=df_team['PLUS_MINUS'].mean(),line_color='green',name='Team Mean')
-            fig_2.update_layout(hovermode='x')  
-            st.plotly_chart(fig_2, use_container_width=True)
+          
 
             fig_3 = px.histogram(df_team, x="FG_PCT")
             fig_3.add_vline(x=df_important['FG_PCT'].values[0],line_color='red',name='Selected Players')
