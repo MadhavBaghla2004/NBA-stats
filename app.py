@@ -17,21 +17,16 @@ st.write('We can pick the best starting lineup using these key metrics.')
 
 
 # User chooses team
-team_names = [f'<span style="color: blue;">{team}</span>' for team in df['team'].unique()]
 team = st.selectbox(
      'Choose Your Team:',
-     team_names,
-     format_func=lambda x: x.split('>')[1].split('<')[0]
-)
+     df['team'].unique())
 
-# Filter the DataFrame based on the selected team
-df_team = df[df['team'] == team.split('>')[1].split('<')[0]].reset_index(drop=True)
-
-# Clean up the players' names
+df_team = df[df['team'] == team].reset_index(drop=True)
 df_team['players_list'] = df_team['players_list'].str.replace(r"[\"\' \[\]]", '').str.split(',')
 duplicate_roster = df_team['players_list'].apply(pd.Series).stack()
 roster = duplicate_roster.unique()
 roster = [player.replace('[', '').replace(']', '').strip("'").replace("'", "") for player in roster]
+
 
 
 
