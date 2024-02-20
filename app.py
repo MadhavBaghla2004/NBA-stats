@@ -82,7 +82,7 @@ if len(players) == 5:
             fig_4.add_vline(x=df_team['FG3_PCT'].mean(),line_color='green',name='Team Mean')
             st.plotly_chart(fig_4, use_container_width=True)
     else:
-        st.warning("No lineup found for the selected players.")
+        st.warning("This group of players did not play together this season, hence there is no data available. Please select a different group")
 else:
     st.warning("Please select exactly 5 players for the lineup.")
 
