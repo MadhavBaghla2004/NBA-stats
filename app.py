@@ -29,13 +29,13 @@ duplicate_roster = df_team['players_list'].apply(pd.Series).stack()
 roster = duplicate_roster.unique()
 # Ensure player names in roster match the formatting in df_team
 roster = [player.replace('[', '').replace(']', '') for player in duplicate_roster.unique()]
-roster = ["".join(player.split(" ")) for player in roster]
+
 
 # Allow user to select players randomly
 players = st.multiselect(
      'Select your players',
      roster,
-     roster[0:5][0:5])
+     roster[0:5])
 
 # Check if exactly 5 players are selected
 if len(players) == 5:
