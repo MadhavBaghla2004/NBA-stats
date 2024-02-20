@@ -25,7 +25,7 @@ team = st.selectbox(
 
 df_team = df[df['team'] == team].reset_index(drop=True)
 df_team['players_list'] = df_team['players_list'].str.replace(r"[\"\' \[\]]", '').str.split(',')
-df_team['FG_PCT'] = (df_team['FG_PCT'] * 100).round(2)
+df_team['FG_PCT'] = round((df_team['FG_PCT'] * 100),2)
 df_team['FG3_PCT'] = (df_team['FG3_PCT'] * 100).round(2)
 duplicate_roster = df_team['players_list'].apply(pd.Series).stack()
 roster = duplicate_roster.unique()
@@ -102,7 +102,7 @@ if len(players) == 5:
             group_name = df_lineup['GROUP_NAME'].values[0]
             fig2.add_scatter(x=[plus_minus_value], y=[gp_value], mode="markers", marker=dict(color='green', size=10, opacity=1), name="Selected lineup", 
                text=[f"PLUS/MINUS: {plus_minus_value}<br>GAMES_PLAYED: {gp_value}<br>LINEUP: {group_name}"], hoverinfo="text")
-            mean_plusminus = df_team['PLUS_MINUS'].mean()
+            mean_plusminus = round(df_team['PLUS_MINUS'].mean(),2)
             fig2.add_vline(x=mean_plusminus, line_dash="dot", line_color="red", annotation_text=f"Team Mean: {mean_plusminus}", annotation_position="bottom right")
             fig2.update_traces(marker=dict(size=20, opacity=1))
             st.plotly_chart(fig2, use_container_width=True)
@@ -120,7 +120,7 @@ if len(players) == 5:
             group_name = df_lineup['GROUP_NAME'].values[0]
             fig3.add_scatter(x=[fg_pct_value], y=[gp_value], mode="markers", marker=dict(color='green', size=10, opacity=1), name="Selected lineup", 
                text=[f"Field Goal Percentage: {fg_pct_value}<br>GAMES_PLAYED: {gp_value}<br>LINEUP: {group_name}"], hoverinfo="text")
-            mean_fg_pct = df_team['FG_PCT'].mean()
+            mean_fg_pct = round(df_team['FG_PCT'].mean(),2)
             fig3.add_vline(x=mean_fg_pct, line_dash="dot", line_color="red", annotation_text=f"Team Mean: {mean_fg_pct}", annotation_position="bottom right")
             fig3.update_traces(marker=dict(size=20, opacity=1))
             st.plotly_chart(fig3, use_container_width=True)
@@ -135,7 +135,7 @@ if len(players) == 5:
             group_name = df_lineup['GROUP_NAME'].values[0]
             fig4.add_scatter(x=[fg3_pct_value], y=[gp_value], mode="markers", marker=dict(color='green', size=10, opacity=1), name="Selected lineup", 
                text=[f"3-Point Field Goal Percentage: {fg3_pct_value}<br>GAMES_PLAYED: {gp_value}<br>LINEUP: {group_name}"], hoverinfo="text")
-            mean_fg3_pct = df_team['FG3_PCT'].mean()
+            mean_fg3_pct = round(df_team['FG3_PCT'].mean(),2)
             fig4.add_vline(x=mean_fg3_pct, line_dash="dot", line_color="red", annotation_text=f"Team Mean: {mean_fg3_pct}", annotation_position="bottom right")
             fig4.update_traces(marker=dict(size=20, opacity=1))
             st.plotly_chart(fig4, use_container_width=True)
