@@ -7,6 +7,7 @@ import base64
 
 # import data
 df = pd.read_csv('NBAlineup.csv')
+st.write(df.head())
 
 # Title for app
 st.set_page_config(layout="wide")
