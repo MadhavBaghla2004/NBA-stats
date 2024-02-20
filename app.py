@@ -77,17 +77,7 @@ if len(players) == 5:
 
         
 
-        team_avg = df_team[['MIN', 'PLUS_MINUS', 'FG_PCT', 'FG3_PCT']].mean()
-        selected_players_stats = df_important[['MIN', 'PLUS_MINUS', 'FG_PCT', 'FG3_PCT']]
-        data = {
-    'Statistic': ['Minutes', 'Plus/Minus', 'FG Percentage', '3-Point Percentage'],
-    'Player': [selected_players_stats['MIN'].values[0], selected_players_stats['PLUS_MINUS'].values[0], selected_players_stats['FG_PCT'].values[0], selected_players_stats['FG3_PCT'].values[0]],
-    'Team Average': [team_avg['MIN'], team_avg['PLUS_MINUS'], team_avg['FG_PCT'], team_avg['FG3_PCT']]
-     }
-        df = pd.DataFrame(data)
-        df_melted = pd.melt(df, id_vars='Statistic', var_name='Category', value_name='Percentage')
-        fig = px.pie(df_melted, values='Percentage', names='Category', title='Player vs. Team Average by Statistic', color='Statistic')
-        fig.show()
+     
     else:
         st.warning("This group of players did not play together this season, hence there is no data available. Please select a different group")
 else:
