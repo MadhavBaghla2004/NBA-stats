@@ -89,6 +89,8 @@ if len(players) == 5:
             group_name = df_lineup['GROUP_NAME'].values[0]
             fig.add_scatter(x=[min_value], y=[gp_value], mode="markers", marker=dict(color='green', size=10, opacity=1), name="Selected lineup", 
                   text=[f"MINUTES: {min_value}<br>GAMES_PLAYED: {gp_value}<br>LINEUP: {group_name}"], hoverinfo="text")
+            mean_min = df_team['MIN'].mean()
+            fig.add_vline(x=mean_min, line_dash="dot", line_color="red", annotation_text=f"Team Mean: {mean_min}", annotation_position="bottom right")
             fig.update_traces(marker=dict(size=20, opacity=1))
             st.plotly_chart(fig, use_container_width=True)
 
@@ -102,6 +104,8 @@ if len(players) == 5:
             group_name = df_lineup['GROUP_NAME'].values[0]
             fig2.add_scatter(x=[plus_minus_value], y=[gp_value], mode="markers", marker=dict(color='green', size=10, opacity=1), name="Selected lineup", 
                text=[f"PLUS/MINUS: {plus_minus_value}<br>GAMES_PLAYED: {gp_value}<br>LINEUP: {group_name}"], hoverinfo="text")
+            mean_plusminus = df_team['PLUS_MINUS'].mean()
+            fig2.add_vline(x=mean_plusminus, line_dash="dot", line_color="red", annotation_text=f"Team Mean: {mean_plusminus}", annotation_position="bottom right")
             fig2.update_traces(marker=dict(size=20, opacity=1))
             st.plotly_chart(fig2, use_container_width=True)
 
@@ -133,6 +137,8 @@ if len(players) == 5:
             group_name = df_lineup['GROUP_NAME'].values[0]
             fig4.add_scatter(x=[fg3_pct_value], y=[gp_value], mode="markers", marker=dict(color='green', size=10, opacity=1), name="Selected lineup", 
                text=[f"3-Point Field Goal Percentage: {fg3_pct_value}<br>GAMES_PLAYED: {gp_value}<br>LINEUP: {group_name}"], hoverinfo="text")
+            mean_fg3_pct = df_team['FG3_PCT'].mean()
+            fig4.add_vline(x=mean_fg3_pct, line_dash="dot", line_color="red", annotation_text=f"Team Mean: {mean_fg3_pct}", annotation_position="bottom right")
             fig4.update_traces(marker=dict(size=20, opacity=1))
             st.plotly_chart(fig4, use_container_width=True)
 
