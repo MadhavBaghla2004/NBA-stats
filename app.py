@@ -51,11 +51,13 @@ if len(players) == 5:
 
     # Check if a lineup is found
     if not df_lineup.empty:
+     
         df_important = df_lineup[['MIN', 'PLUS_MINUS','FG_PCT', 'FG3_PCT']]
-        st.table(df_important[['MIN', 'PLUS_MINUS', 'FG_PCT', 'FG3_PCT']].reset_index(drop=True))
+        df_display = df_important.reset_index(drop=True)
+        df_display.reset_index(drop=True, inplace=True)
+        st.table(df_display[['MIN', 'PLUS_MINUS', 'FG_PCT', 'FG3_PCT']])
 
         
-
 
         col1, col2, col3, col4 = st.columns(4)
 
