@@ -34,13 +34,12 @@ players = st.multiselect(
      'Select your players',
      roster)
 
-st.write(players)
 
 # Check if exactly 5 players are selected
 if len(players) == 5:
     df_team['players_list_stripped'] = df_team['players_list'].apply(lambda x: [p.replace('[', '').replace(']', '').strip("'").replace("'", "") for p in x])
-    df_split = df_team['players_list_stripped'].str.split(',').apply(pd.Series) 
-    df_lineup = df_team[df_split.apply(lambda r: all(p in r for p in players), axis=1)]
+    df_lineup = df_team[df_team['players_list_stripped'].apply(lambda x: set(players).issubset(x))]
+
     # Check if a lineup is found
     if not df_lineup.empty:
         df_important = df_lineup[['MIN', 'PLUS_MINUS','FG_PCT', 'FG3_PCT']]
