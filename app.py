@@ -35,7 +35,7 @@ roster = ["".join(player.split(" ")) for player in roster]
 players = st.multiselect(
      'Select your players',
      roster,
-     roster[0:5])
+     roster[0:5][0:5])
 
 # Check if exactly 5 players are selected
 if len(players) == 5:
