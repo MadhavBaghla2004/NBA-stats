@@ -149,7 +149,6 @@ if len(players) == 5:
         st.warning(warning_message)
         st.write(f'<span style="color:red">{possible_lineup_message}</span>', unsafe_allow_html=True)
 else:
-else:
     st.warning("Please select exactly 5 players for the lineup.")
 
 
