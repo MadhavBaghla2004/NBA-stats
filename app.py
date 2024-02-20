@@ -53,7 +53,7 @@ if len(players) == 5:
     if not df_lineup.empty:
      
         df_important = df_lineup[['MIN', 'PLUS_MINUS','FG_PCT', 'FG3_PCT']]
-        st.write(df_important['MIN', 'PLUS_MINUS','FG_PCT', 'FG3_PCT'])
+        st.write(df_important[['MIN', 'PLUS_MINUS','FG_PCT', 'FG3_PCT']])
 
         
 
