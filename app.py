@@ -4,7 +4,7 @@ import plotly.express as px
 
 
 # import data
-df = pd.read_csv('NBALineup2021.csv')
+df = pd.read_csv('NBAlineup.csv')
 
 # Title for app
 st.set_page_config(layout="wide")
