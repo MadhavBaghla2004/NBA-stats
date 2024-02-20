@@ -79,7 +79,7 @@ if len(players) == 5:
         col1, col2, col3, col4 = st.columns(4)
 
         with col1:
-            fig_min = px.histogram(df_team, x="MIN",y="GP", histfunc="count")
+            fig = px.bar(df_team, x="MIN", y="GP")
             fig_min.add_vline(x=df_important['MIN'].values[0],line_color='red',name='Selected Players')
             fig_min.add_vline(x=df_team['MIN'].mean(),line_color='green',name='Team Mean')
             fig_min.update_layout(hovermode='x')  
