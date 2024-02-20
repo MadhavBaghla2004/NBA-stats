@@ -39,7 +39,7 @@ if len(players) == 5:
     # Find the lineup that matches the selected players
     # Ensure that player names in df_team are stripped of square brackets too
     df_team['players_list_stripped'] = df_team['players_list'].apply(lambda x: [p.replace('[', '').replace(']', '').strip("'").replace("'", "") for p in x])
-    df_lineup = df_team[df_team['players_list_stripped'].apply(lambda x: set(x) == set(players))]
+    df_lineup = df_team[df_team['players_list'].apply(lambda x: sorted(x) == sorted(players))]
 
     # Check if a lineup is found
     if not df_lineup.empty:
