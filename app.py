@@ -241,7 +241,7 @@ footer = """
 st.markdown(
     """
     <div class="footer">
-        Copyright © 2024 Madhav Baghla
+        Copyright © 2024 Madhav Baghla | Use computer for best experience
     </div>
     """,
     unsafe_allow_html=True
