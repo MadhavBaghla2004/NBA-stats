@@ -229,11 +229,13 @@ footer{
     visibility:visible;
 }
 footer:after{
-    content:'Copyright © Madhav Baghla';
+    content:'Copyright © 2024 Madhav Baghla';
     position:relative;
     color:black;
 }
 """
+
+st.markdown(f"<style>{footer}</style>", unsafe_allow_html=True)
 
 
 
