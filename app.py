@@ -13,7 +13,7 @@ df = pd.read_csv('NBAlineup.csv')
 
 
 # Title for app
-PAGE_TITLE = "Digital CV | Madhav Baghla"
+PAGE_TITLE = "NBA LINEUP ANALYSIS TOOL"
 PAGE_ICON = "🏀"
 st.set_page_config(page_title=PAGE_TITLE, page_icon=PAGE_ICON)
 st.title('NBA Lineup Analysis Tool')
