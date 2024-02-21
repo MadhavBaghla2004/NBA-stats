@@ -9,6 +9,7 @@ import base64
 # import data
 df = pd.read_csv('NBAlineup.csv')
 
+st.image('bg.png', caption='NBA Lineup Analysis Tool Preview')
 
 
 # Title for app
