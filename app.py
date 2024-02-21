@@ -225,8 +225,15 @@ hide_streamlit_style = """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 footer = """
-footer{
-    visibility:visible;
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #f0f0f0;
+    color: black;
+    text-align: left;
+    padding: 10px;
 }
 footer:after{
     content:'Copyright © 2024 Madhav Baghla';
