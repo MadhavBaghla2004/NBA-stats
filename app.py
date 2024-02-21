@@ -15,7 +15,14 @@ df = pd.read_csv('NBAlineup.csv')
 # Title for app
 st.set_page_config(layout="wide")
 st.title('NBA Lineup Analysis Tool')
-st.image('bg.png', caption='NBA Lineup Analysis Tool Preview')
+st.markdown("""
+    <head>
+        <meta property="og:title" content="NBA Lineup Analysis Tool">
+        <meta property="og:description" content="Analyzing key statistics in the NBA for the 2021-22 season to pick the best starting lineup.">
+        <meta property="og:image" content="bg.png">
+        <meta property="og:url" content="https://nba-lineupstatistics.streamlit.app/">
+    </head>
+""", unsafe_allow_html=True)
 st.markdown("""
 <blockquote style="background-color: black; color: white; padding: 10px;">
 <span style="color: purple;">Use computer for best experience</span> <br>
