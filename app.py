@@ -16,6 +16,7 @@ st.set_page_config(layout="wide")
 st.title('NBA Lineup Analysis Tool')
 st.markdown("""
 <blockquote style="background-color: black; color: white; padding: 10px;">
+<span style="color: purple;">Use computer for best experience</span> <br>
 Using this tool we can analyse some key statistics in the NBA for the <span style="color: blue;">2021-22 season</span>, picking our best starting lineup. <br>
 You can see the difference in 4 key metrics- namely <span style="color: green;">minutes played</span>, <span style="color: green;">plus minus</span>, <span style="color: green;">field goal percentage</span>, and <span style="color: green;">3 point percentage</span>.<br>
 We can pick the best starting lineup using these <span style="color: red;"> 4 </span> key metrics. <br>
@@ -241,7 +242,7 @@ footer = """
 st.markdown(
     """
     <div class="footer">
-        Copyright © 2024 Madhav Baghla | Use computer for best experience
+        Copyright © 2024 Madhav Baghla 
     </div>
     """,
     unsafe_allow_html=True
