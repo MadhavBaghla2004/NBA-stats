@@ -9,12 +9,13 @@ import base64
 # import data
 df = pd.read_csv('NBAlineup.csv')
 
-st.image('bg.png', caption='NBA Lineup Analysis Tool Preview')
+
 
 
 # Title for app
 st.set_page_config(layout="wide")
 st.title('NBA Lineup Analysis Tool')
+st.image('bg.png', caption='NBA Lineup Analysis Tool Preview')
 st.markdown("""
 <blockquote style="background-color: black; color: white; padding: 10px;">
 <span style="color: purple;">Use computer for best experience</span> <br>
