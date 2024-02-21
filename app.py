@@ -18,7 +18,10 @@ st.markdown("""
 <blockquote style="background-color: black; color: white; padding: 10px;">
 Using this tool we can analyse some key statistics in the NBA for the <span style="color: blue;">2021-22 season</span>, picking our best starting lineup. <br>
 You can see the difference in 4 key metrics- namely <span style="color: green;">minutes played</span>, <span style="color: green;">plus minus</span>, <span style="color: green;">field goal percentage</span>, and <span style="color: green;">3 point percentage</span>.<br>
-We can pick the best starting lineup using these <span style="color: orange;"> four </span> key metrics. 
+We can pick the best starting lineup using these <span style="color: orange;"> four </span> key metrics. <br>
+<span style="color: orange;">Step 1:</span> Select a team <br>
+<span style="color: orange;">Step 2:</span> Select 5 players from that team. Data will be displayed only if the 5 selected players played together at least once<br>
+<span style="color: orange;">Suggested Lineup:</span> You will be given a suggested lineup and then you can select those 5 players to display the data.
 </blockquote>
 """, unsafe_allow_html=True)
 
