@@ -235,14 +235,21 @@ footer = """
     text-align: left;
     padding: 10px;
 }
-footer:after{
-    content:'Copyright © 2024 Madhav Baghla';
-    position:relative;
-    color:black;
-}
 """
 
+# Display the footer HTML element
+st.markdown(
+    """
+    <div class="footer">
+        Copyright © 2024 Madhav Baghla
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+# Apply the CSS styles to the footer
 st.markdown(f"<style>{footer}</style>", unsafe_allow_html=True)
+
 
 
 
