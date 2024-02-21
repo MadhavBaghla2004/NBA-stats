@@ -11,7 +11,6 @@ df = pd.read_csv('NBAlineup.csv')
 
 
 # Title for app
-st.set_page_config(heading=None)
 st.set_page_config(layout="wide")
 st.title('NBA Lineup Analysis Tool')
 st.markdown("""
