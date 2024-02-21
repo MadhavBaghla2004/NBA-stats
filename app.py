@@ -187,12 +187,8 @@ def add_bg_from_local(image_file):
     )
 add_bg_from_local('bg.png')
 
-hide_menu_style = """
-        <style>
-        #MainMenu {visibility: hidden;}
-        </style>
-        """
-st.markdown(hide_menu_style, unsafe_allow_html=True)
+[ui]
+hideTopBar = true
 
 
 
